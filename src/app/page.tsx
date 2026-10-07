@@ -1,8 +1,19 @@
+import { ServiceCards } from "@/components/sections/ServiceCards";
+import { WhyIAM } from "@/components/sections/WhyIAM";
+import { FeaturedWork } from "@/components/sections/FeaturedWork";
+import { CTASection } from "@/components/sections/CTASection";
+
 export default function Home() {
   return (
     <>
       {/* ── Hero ───────────────────────────────────── */}
-      <section className="flex items-center justify-center min-h-[85vh] bg-base px-4">
+      <section
+        className="flex items-center justify-center min-h-[85vh] bg-base px-4"
+        style={{
+          backgroundImage:
+            "radial-gradient(ellipse at 50% 40%, rgba(255,255,255,0.04) 0%, transparent 65%)",
+        }}
+      >
         <div className="max-w-4xl text-center">
           <h1 className="text-5xl font-bold tracking-tight text-white md:text-6xl lg:text-7xl">
             Audio. Video. Media.
@@ -29,6 +40,12 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── Sections ────────────────────────────────── */}
+      <ServiceCards />
+      <WhyIAM />
+      <FeaturedWork />
+      <CTASection />
     </>
   );
 }
