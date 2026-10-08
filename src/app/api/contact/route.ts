@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
           },
           body: JSON.stringify({
             from: "IAM Website <onboarding@resend.dev>",
-            to: ["hello@impactaudiomedia.com"],
+            to: ["zodzod11@gmail.com"],
             subject: `New Inquiry: ${data.projectType} — ${data.name}`,
             text: formatSubmission(data),
           }),
