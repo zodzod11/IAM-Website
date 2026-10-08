@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   },
   description:
     "Live event production, AV system design, and church technical training for organizations across New England. Audio, video, lighting, and media — done with impact.",
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     title: "Impact - Audio & Media",
     description:
