@@ -1,3 +1,7 @@
+/**
+ * IAM Footer — 3-column layout with services, company, and contact.
+ * Appears on every page via the root layout.
+ */
 export function Footer() {
   return (
     <footer className="border-t border-border-dark bg-base-alt">
@@ -38,7 +42,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* ── Contact + Legal ─────────────────────── */}
+          {/* ── Contact ───────────────────────────── */}
           <div>
             <h4 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">
               Contact
@@ -58,11 +62,6 @@ export function Footer() {
                 </a>
               </li>
               <li>Greater Boston & New England</li>
-              <li className="mt-4 pt-4 border-t border-border-dark/30">
-                <a href="/privacy" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
             </ul>
           </div>
         </div>

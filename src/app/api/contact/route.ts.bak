@@ -9,7 +9,6 @@ type ContactPayload = {
   eventDate?: string;
   attendees?: string;
   details: string;
-  honeypot?: string;
 };
 
 function validate(body: Record<string, unknown>): body is ContactPayload {
@@ -20,14 +19,6 @@ function validate(body: Record<string, unknown>): body is ContactPayload {
   if (typeof body.details !== "string" || body.details.trim().length < 10)
     return false;
   return true;
-}
-
-function isSpam(body: Record<string, unknown>): boolean {
-  // Honeypot check — if the hidden field is filled, it's a bot
-  if (typeof body.honeypot === "string" && body.honeypot.length > 0) {
-    return true;
-  }
-  return false;
 }
 
 function formatSubmission(data: ContactPayload): string {
@@ -47,19 +38,13 @@ function formatSubmission(data: ContactPayload): string {
 /**
  * POST /api/contact
  *
- * Accepts JSON contact form submissions with honeypot spam protection.
- * Validates, sends via Resend if configured, logs to console otherwise.
+ * Accepts JSON contact form submissions. Validates the payload,
+ * attempts to send via Resend if configured, otherwise logs to
+ * console. Returns JSON with success/error status.
  */
 export async function POST(request: NextRequest) {
   try {
     const body: Record<string, unknown> = await request.json();
-
-    // ── Spam check (silently reject bots) ─────────
-    if (isSpam(body)) {
-      // Return success to bots so they don't learn they're blocked
-      console.log("Spam submission blocked (honeypot triggered)");
-      return NextResponse.json({ success: true });
-    }
 
     if (!validate(body)) {
       return NextResponse.json(
@@ -103,6 +88,7 @@ export async function POST(request: NextRequest) {
       }
     } else {
       console.log("RESEND_API_KEY not set — submission logged to console only.");
+      console.log("To enable email, add RESEND_API_KEY to your .env file.");
     }
 
     return NextResponse.json({ success: true });

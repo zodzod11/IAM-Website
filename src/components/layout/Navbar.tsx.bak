@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const NAV_LINKS = [
-  { label: "Services", hasDropdown: true },
+  { label: "Services", href: "/services", hasDropdown: true },
   { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
@@ -18,8 +18,8 @@ const DROPDOWN_ITEMS = [
 /**
  * IAM Navbar — sticky, responsive, with mobile slide-in overlay.
  *
- * Desktop: logo · nav links (Services opens dropdown only) · CTA
- * Mobile:  logo · hamburger → full-height overlay menu with sub-links
+ * Desktop: logo · nav links · CTA
+ * Mobile:  logo · hamburger → full-height overlay menu
  */
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -48,43 +48,30 @@ export function Navbar() {
         <ul className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <li key={link.label} className="relative group">
-              {link.hasDropdown ? (
-                <>
-                  <button
-                    type="button"
-                    className="text-sm font-medium text-zinc-400 hover:text-white transition-colors cursor-pointer"
-                  >
-                    {link.label}
-                    <span className="ml-1 text-xs opacity-60">▾</span>
-                  </button>
-                  {/* Dropdown */}
-                  <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
-                    <div className="bg-surface rounded border border-border-dark p-3 w-56 shadow-lg">
+              <a
+                href={link.href}
+                className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
+              >
+                {link.label}
+                {link.hasDropdown && (
+                  <span className="ml-1 text-xs opacity-60">▾</span>
+                )}
+              </a>
+              {/* Dropdown for Services */}
+              {link.hasDropdown && (
+                <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
+                  <div className="bg-surface rounded border border-border-dark p-3 w-56 shadow-lg">
+                    {DROPDOWN_ITEMS.map((item) => (
                       <a
-                        href="/services"
-                        className="block px-4 py-2 text-xs font-semibold text-zinc-500 uppercase tracking-wider border-b border-border-dark/30"
+                        key={item.label}
+                        href={item.href}
+                        className="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-accent/10 rounded transition-colors"
                       >
-                        All Services
+                        {item.label}
                       </a>
-                      {DROPDOWN_ITEMS.map((item) => (
-                        <a
-                          key={item.label}
-                          href={item.href}
-                          className="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-accent/10 rounded transition-colors"
-                        >
-                          {item.label}
-                        </a>
-                      ))}
-                    </div>
+                    ))}
                   </div>
-                </>
-              ) : (
-                <a
-                  href={link.href!}
-                  className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
-                >
-                  {link.label}
-                </a>
+                </div>
               )}
             </li>
           ))}
@@ -104,7 +91,6 @@ export function Navbar() {
           className="flex md:hidden flex-col gap-1.5 w-6 cursor-pointer"
           onClick={toggle}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
         >
           <span className={`block h-0.5 rounded bg-white transition-all duration-200 ${mobileOpen ? "rotate-45 translate-y-1" : ""}`} />
           <span className={`block h-0.5 rounded bg-white transition-all duration-200 ${mobileOpen ? "opacity-0" : ""}`} />
@@ -116,8 +102,7 @@ export function Navbar() {
       {mobileOpen && (
         <div
           className="fixed inset-0 z-40 flex flex-col bg-base/98 backdrop-blur-md"
-          role="dialog"
-          aria-label="Navigation menu"
+          onClick={(e) => { if (e.target === e.currentTarget) close(); }}
         >
           <div className="flex items-center justify-between px-4 md:px-8 py-4">
             <a href="/" className="text-xl font-bold text-white" onClick={close}>
@@ -136,39 +121,27 @@ export function Navbar() {
           <nav className="flex flex-col px-6 pt-8 pb-12 gap-4">
             {NAV_LINKS.map((link) => (
               <div key={link.label}>
-                {link.hasDropdown ? (
-                  <>
-                    <span className="block py-3 text-lg font-medium text-zinc-300 border-b border-border-dark/30">
-                      {link.label}
-                    </span>
-                    <div className="flex flex-col gap-2 pl-4 pb-3">
+                <a
+                  href={link.href}
+                  onClick={close}
+                  className="block py-3 text-lg font-medium text-zinc-300 hover:text-white hover:pl-4 transition-all border-b border-border-dark/30"
+                >
+                  {link.label}
+                </a>
+                {/* Show sub-links on mobile for Services */}
+                {link.hasDropdown && (
+                  <div className="flex flex-col gap-2 pl-4 pb-2">
+                    {DROPDOWN_ITEMS.map((item) => (
                       <a
-                        href="/services"
+                        key={item.label}
+                        href={item.href}
                         onClick={close}
-                        className="block py-2 text-sm font-semibold text-zinc-400 hover:text-zinc-200 transition-colors"
+                        className="block py-2 text-sm text-zinc-500 hover:text-zinc-300 transition-colors"
                       >
-                        All Services →
+                        {item.label}
                       </a>
-                      {DROPDOWN_ITEMS.map((item) => (
-                        <a
-                          key={item.label}
-                          href={item.href}
-                          onClick={close}
-                          className="block py-2 text-sm text-zinc-500 hover:text-zinc-300 transition-colors"
-                        >
-                          {item.label}
-                        </a>
-                      ))}
-                    </div>
-                  </>
-                ) : (
-                  <a
-                    href={link.href!}
-                    onClick={close}
-                    className="block py-3 text-lg font-medium text-zinc-300 hover:text-white hover:pl-4 transition-all border-b border-border-dark/30"
-                  >
-                    {link.label}
-                  </a>
+                    ))}
+                  </div>
                 )}
               </div>
             ))}
