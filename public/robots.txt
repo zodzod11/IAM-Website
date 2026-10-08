@@ -1,6 +1,6 @@
-# https://impactaudiomedia.com/robots.txt
+# https://iam-website.vercel.app/robots.txt
 
 User-agent: *
 Allow: /
 
-Sitemap: https://impactaudiomedia.com/sitemap.xml
+Sitemap: https://iam-website.vercel.app/sitemap.xml

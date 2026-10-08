@@ -45,7 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     "@type": "Organization",
     name: "Impact - Audio & Media",
     alternateName: "IAM",
-    url: "https://impactaudiomedia.com",
+    url: "https://iam-website.vercel.app",
     description:
       "Live event production, AV system design, and church technical training for organizations across New England.",
     areaServed: [

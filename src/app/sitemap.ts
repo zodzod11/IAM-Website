@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://impactaudiomedia.com";
+const BASE_URL = "https://iam-website.vercel.app";
 
 const PAGES = [
   { url: "", priority: 1.0, changeFrequency: "weekly" as const },
@@ -15,7 +15,7 @@ const PAGES = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return PAGES.map((page) => ({
-    url: `${BASE_URL}${page.url}/`,
+    url: `${BASE_URL}${page.url}`,
     lastModified: "2026-10-07",
     changeFrequency: page.changeFrequency,
     priority: page.priority,
