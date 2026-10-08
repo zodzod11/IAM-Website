@@ -1,0 +1,6 @@
+# https://impactaudiomedia.com/robots.txt
+
+User-agent: *
+Allow: /
+
+Sitemap: https://impactaudiomedia.com/sitemap.xml

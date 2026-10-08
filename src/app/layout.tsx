@@ -29,15 +29,66 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Impact - Audio & Media",
+    alternateName: "IAM",
+    url: "https://impactaudiomedia.com",
+    description:
+      "Live event production, AV system design, and church technical training for organizations across New England.",
+    areaServed: [
+      { "@type": "City", name: "Boston" },
+      { "@type": "State", name: "Massachusetts" },
+      { "@type": "State", name: "New England" },
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "hello@impactaudiomedia.com",
+      contactType: "sales",
+      availableLanguage: "English",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Services",
+      itemListElement: [
+        {
+          "@type": "Service",
+          name: "Event Production",
+          description: "Live sound, video, lighting, and media production for events.",
+        },
+        {
+          "@type": "Service",
+          name: "AV Systems",
+          description: "Professional AV consultation, design, and installation.",
+        },
+        {
+          "@type": "Service",
+          name: "Church AV Training",
+          description: "Training, staffing, and systems for church AV ministries.",
+        },
+      ],
+    },
+  };
+
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {/* ── JSON-LD Structured Data ──────────────── */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

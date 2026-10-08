@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Our Work",
+  description: "Portfolio of event production, AV system, and church training projects from Impact - Audio & Media across New England.",
+};
+
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 

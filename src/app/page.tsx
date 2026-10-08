@@ -1,3 +1,12 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Impact - Audio & Media",
+  description:
+    "Live event production, AV system design, and church technical training for organizations across New England. Audio, video, lighting, and media — done with impact.",
+};
+
+
 import { ServiceCards } from "@/components/sections/ServiceCards";
 import { WhyIAM } from "@/components/sections/WhyIAM";
 import { FeaturedWork } from "@/components/sections/FeaturedWork";

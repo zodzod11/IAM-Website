@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Event Production",
+  description: "Live sound, video, lighting, and media production for events. IAM provides professional event production for churches, nonprofits, and organizations.",
+};
+
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { ServiceProcess } from "@/components/sections/ServiceProcess";
 import { SectionHeading } from "@/components/ui/SectionHeading";

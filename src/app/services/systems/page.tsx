@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AV Systems",
+  description: "Professional AV consultation, system design, installation, and optimization for organizations that need reliable technical systems.",
+};
+
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { ServiceProcess } from "@/components/sections/ServiceProcess";
 import { SectionHeading } from "@/components/ui/SectionHeading";

@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Church AV Training",
+  description: "AV training, staffing, and support for churches. IAM helps churches build confident, self-sustaining AV ministries with training and development.",
+};
+
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { ServiceProcess } from "@/components/sections/ServiceProcess";
 import { SectionHeading } from "@/components/ui/SectionHeading";
