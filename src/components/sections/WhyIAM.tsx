@@ -48,11 +48,11 @@ export function WhyIAM() {
             >
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-2xl">{item.icon}</span>
-                <h3 className="text-xl font-semibold text-white">
+                <h3 className="text-xl font-semibold text-zinc-900">
                   {item.title}
                 </h3>
               </div>
-              <p className="text-base text-zinc-400 leading-relaxed">
+              <p className="text-base text-zinc-600 leading-relaxed">
                 {item.description}
               </p>
             </div>

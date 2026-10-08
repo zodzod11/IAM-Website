@@ -39,10 +39,10 @@ export function ServiceProcess({
               <div className="flex items-center justify-center w-12 h-12 mx-auto rounded-full bg-accent/10 text-accent text-xl font-bold">
                 {step.number}
               </div>
-              <h3 className="mt-4 text-xl font-semibold text-white">
+              <h3 className="mt-4 text-xl font-semibold text-zinc-900">
                 {step.title}
               </h3>
-              <p className="mt-3 text-base text-zinc-400 leading-relaxed">
+              <p className="mt-3 text-base text-zinc-600 leading-relaxed">
                 {step.description}
               </p>
             </div>

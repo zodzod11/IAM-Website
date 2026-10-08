@@ -33,10 +33,10 @@ export function Card({
             <span className="text-lg">{icon}</span>
           </div>
         )}
-        <h3 className="text-xl font-semibold tracking-tight text-white">
+        <h3 className="text-xl font-semibold tracking-tight text-zinc-900">
           {title}
         </h3>
-        <p className="text-base text-zinc-400 leading-relaxed">
+        <p className="text-base text-zinc-600 leading-relaxed">
           {description}
         </p>
         {href && (

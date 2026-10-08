@@ -52,11 +52,11 @@ export default function ServicesOverview() {
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-4xl">🎤</span>
                 <div>
-                  <h2 className="text-2xl font-bold text-white">Event Production</h2>
+                  <h2 className="text-2xl font-bold text-zinc-900">Event Production</h2>
                   <p className="text-sm text-zinc-500">Live events</p>
                 </div>
               </div>
-              <p className="text-base text-zinc-400 leading-relaxed">
+              <p className="text-base text-zinc-600 leading-relaxed">
                 Live sound, video, lighting, and media production for
                 events that matter. From conferences to celebrations,
                 IAM handles the technical production.
@@ -84,11 +84,11 @@ export default function ServicesOverview() {
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-4xl">🔧</span>
                 <div>
-                  <h2 className="text-2xl font-bold text-white">AV Systems</h2>
+                  <h2 className="text-2xl font-bold text-zinc-900">AV Systems</h2>
                   <p className="text-sm text-zinc-500">Design &amp; installation</p>
                 </div>
               </div>
-              <p className="text-base text-zinc-400 leading-relaxed">
+              <p className="text-base text-zinc-600 leading-relaxed">
                 Professional AV consultation, system design, installation,
                 and optimization. IAM helps organizations build reliable
                 technical systems that serve their mission.
@@ -116,11 +116,11 @@ export default function ServicesOverview() {
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-4xl">⛪</span>
                 <div>
-                  <h2 className="text-2xl font-bold text-white">Church AV Training</h2>
+                  <h2 className="text-2xl font-bold text-zinc-900">Church AV Training</h2>
                   <p className="text-sm text-zinc-500">Ministry support</p>
                 </div>
               </div>
-              <p className="text-base text-zinc-400 leading-relaxed">
+              <p className="text-base text-zinc-600 leading-relaxed">
                 Training, staffing, and systems that help churches build
                 confident, self-sustaining AV ministries. IAM solves the
                 people + process + technology challenge.

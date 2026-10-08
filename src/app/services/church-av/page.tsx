@@ -88,9 +88,9 @@ export default function ChurchAV() {
               >
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-3xl">{f.icon}</span>
-                  <h3 className="text-xl font-semibold text-white">{f.title}</h3>
+                  <h3 className="text-xl font-semibold text-zinc-900">{f.title}</h3>
                 </div>
-                <p className="text-base text-zinc-400 leading-relaxed">{f.desc}</p>
+                <p className="text-base text-zinc-600 leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>

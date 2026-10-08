@@ -63,11 +63,11 @@ export function FeaturedWork() {
                   ))}
                 </div>
 
-                <h3 className="text-xl font-semibold text-white">
+                <h3 className="text-xl font-semibold text-zinc-900">
                   {project.title}
                 </h3>
                 <p className="text-sm text-zinc-500 mt-1">{project.client}</p>
-                <p className="mt-3 text-zinc-400 leading-relaxed">
+                <p className="mt-3 text-zinc-600 leading-relaxed">
                   {project.description}
                 </p>
               </div>

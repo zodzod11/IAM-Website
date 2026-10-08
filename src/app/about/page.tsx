@@ -120,9 +120,9 @@ export default function About() {
               >
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-3xl">{v.icon}</span>
-                  <h3 className="text-xl font-semibold text-white">{v.title}</h3>
+                  <h3 className="text-xl font-semibold text-zinc-900">{v.title}</h3>
                 </div>
-                <p className="text-base text-zinc-400 leading-relaxed">{v.desc}</p>
+                <p className="text-base text-zinc-600 leading-relaxed">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -147,7 +147,7 @@ export default function About() {
                 <div className="flex items-center justify-center w-16 h-16 mx-auto rounded-full bg-accent/10 text-accent text-2xl mb-4">
                   <span>{member.name[0]}</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white">{member.name}</h3>
+                <h3 className="text-xl font-semibold text-zinc-900">{member.name}</h3>
                 <p className="text-sm text-zinc-500 mt-1">{member.role}</p>
                 <p className="mt-3 text-sm text-zinc-400 leading-relaxed">
                   {member.bio}

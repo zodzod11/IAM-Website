@@ -87,7 +87,7 @@ export default function Work() {
                     </div>
 
                     <div className="flex items-center justify-between mb-3">
-                      <h2 className="text-2xl font-bold text-white">
+                      <h2 className="text-2xl font-bold text-zinc-900">
                         {project.title}
                       </h2>
                       <span className="text-xs text-zinc-500">{project.date}</span>
