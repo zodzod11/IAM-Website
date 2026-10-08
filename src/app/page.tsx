@@ -17,13 +17,15 @@ export default function Home() {
     <>
       {/* ── Hero ───────────────────────────────────── */}
       <section
-        className="flex items-center justify-center min-h-[85vh] bg-base px-4"
+        className="flex items-center justify-center min-h-[85vh] bg-base px-4 relative"
         style={{
-          backgroundImage:
-            "radial-gradient(ellipse at 50% 40%, rgba(255,255,255,0.04) 0%, transparent 65%)",
+          backgroundImage: "linear-gradient(rgba(15,15,15,0.70), rgba(15,15,15,0.85)), url(/images/events/generations-event.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center 30%",
         }}
       >
-        <div className="max-w-4xl text-center">
+        <div className="absolute inset-0 bg-base/30 pointer-events-none" />
+        <div className="max-w-4xl text-center relative z-10">
           <h1 className="text-5xl font-bold tracking-tight text-white md:text-6xl lg:text-7xl">
             Audio. Video. Media.
             <br />

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 
@@ -8,14 +9,11 @@ const PROJECTS = [
     services: ["Audio", "Photography", "360 Booth", "Lighting"],
     description:
       "Full-event production for a 100-guest celebration including PA setup, wireless microphones, music playback, backdrop photography, 360 photo booth, and room uplighting.",
-    image: null, // Placeholder until a web-ready image is provided
+    image: "/images/events/generations-event.jpg",
+    alt: "IAM event production setup with lighting and backdrop",
   },
 ] as const;
 
-/**
- * Featured Work — showcases real IAM projects with photos and details.
- * Designed to grow as more projects are completed and documented.
- */
 export function FeaturedWork() {
   return (
     <section className="bg-base-alt">
@@ -32,25 +30,17 @@ export function FeaturedWork() {
               key={project.title}
               className="surface-card rounded-lg overflow-hidden"
             >
-              {/* ── Image Placeholder ────────────────── */}
-              <div className="aspect-video bg-base-alt flex items-center justify-center">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="text-center py-12">
-                    <p className="text-sm text-zinc-500">📸</p>
-                    <p className="mt-2 text-xs text-zinc-600">
-                      Photo coming soon
-                    </p>
-                  </div>
-                )}
+              <div className="aspect-video bg-base-alt relative overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 80vw"
+                  priority
+                />
               </div>
 
-              {/* ── Project Info ─────────────────────── */}
               <div className="p-6 md:p-8">
                 <div className="flex flex-wrap gap-2 mb-3">
                   {project.services.map((service) => (
@@ -62,7 +52,6 @@ export function FeaturedWork() {
                     </span>
                   ))}
                 </div>
-
                 <h3 className="text-xl font-semibold text-zinc-900">
                   {project.title}
                 </h3>

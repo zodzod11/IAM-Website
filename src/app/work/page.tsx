@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "Our Work",
   description: "Portfolio of event production, AV system, and church training projects from Impact - Audio & Media across New England.",
 };
-
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Button } from "@/components/ui/Button";
 
 const PROJECTS = [
   {
@@ -16,14 +16,14 @@ const PROJECTS = [
     services: ["Audio", "Photography", "360 Booth", "Lighting"],
     description:
       "Full-event production for a 100-guest celebration. IAM provided PA setup, wireless microphones, music playback, backdrop photography, 360 photo booth operation, and room uplighting.",
-    image: null,
+    image: "/images/events/generations-event.jpg",
+    alt: "IAM event production setup with lighting and backdrop",
   },
 ] as const;
 
 export default function Work() {
   return (
     <>
-      {/* ── Hero ─────────────────────────────────── */}
       <section
         className="flex items-center justify-center min-h-[50vh] bg-base px-4"
         style={{
@@ -45,80 +45,55 @@ export default function Work() {
         </div>
       </section>
 
-      {/* ── Project Grid ─────────────────────────── */}
       <section className="bg-base-alt">
         <div className="mx-auto max-w-7xl px-4 md:px-8 py-16 md:py-24">
-          {PROJECTS.length > 0 ? (
-            <div className="space-y-8">
-              {PROJECTS.map((project) => (
-                <article
-                  key={project.title}
-                  className="surface-card rounded-lg overflow-hidden"
-                >
-                  {/* ── Image ───────────────────────────── */}
-                  <div className="aspect-video bg-base-alt flex items-center justify-center">
-                    {project.image ? (
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="text-center py-16">
-                        <p className="text-4xl text-zinc-500">📸</p>
-                        <p className="mt-3 text-sm text-zinc-600">
-                          Project photo coming soon
-                        </p>
-                      </div>
-                    )}
+          <div className="space-y-8">
+            {PROJECTS.map((project) => (
+              <article
+                key={project.title}
+                className="surface-card rounded-lg overflow-hidden"
+              >
+                <div className="aspect-video bg-base-alt relative overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 80vw"
+                    priority
+                  />
+                </div>
+
+                <div className="p-6 md:p-8">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.services.map((s) => (
+                      <span
+                        key={s}
+                        className="text-xs font-medium px-3 py-1 rounded-full bg-accent/10 text-accent"
+                      >
+                        {s}
+                      </span>
+                    ))}
                   </div>
 
-                  {/* ── Info ─────────────────────────────── */}
-                  <div className="p-6 md:p-8">
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.services.map((s) => (
-                        <span
-                          key={s}
-                          className="text-xs font-medium px-3 py-1 rounded-full bg-accent/10 text-accent"
-                        >
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="flex items-center justify-between mb-3">
-                      <h2 className="text-2xl font-bold text-zinc-900">
-                        {project.title}
-                      </h2>
-                      <span className="text-xs text-zinc-500">{project.date}</span>
-                    </div>
-
-                    <p className="text-sm text-zinc-500">{project.client}</p>
-                    <p className="mt-4 text-base text-zinc-400 leading-relaxed">
-                      {project.description}
-                    </p>
+                  <div className="flex items-center justify-between mb-3">
+                    <h2 className="text-2xl font-bold text-zinc-900">
+                      {project.title}
+                    </h2>
+                    <span className="text-xs text-zinc-500">{project.date}</span>
                   </div>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-16">
-              <SectionHeading
-                title="Projects Coming Soon"
-                subtitle="We are documenting our work as we complete engagements. Check back soon for case studies and project galleries."
-                alignment="center"
-              />
-              <div className="mt-10">
-                <Button href="/contact" variant="primary" size="lg">
-                  Ask About Our Work
-                </Button>
-              </div>
-            </div>
-          )}
+
+                  <p className="text-sm text-zinc-500">{project.client}</p>
+                  <p className="mt-4 text-base text-zinc-600 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── CTA ──────────────────────────────────── */}
       <section className="bg-base">
         <div className="mx-auto max-w-3xl px-4 md:px-8 py-16 md:py-24 text-center">
           <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
