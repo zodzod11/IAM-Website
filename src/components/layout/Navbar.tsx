@@ -2,8 +2,14 @@
 
 import { useState } from "react";
 
-const NAV_LINKS = [
-  { label: "Services", hasDropdown: true },
+type NavLink = {
+  label: string;
+  href: string;
+  hasDropdown?: boolean;
+};
+
+const NAV_LINKS: readonly NavLink[] = [
+  { label: "Services", href: "/services", hasDropdown: true },
   { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
@@ -17,9 +23,6 @@ const DROPDOWN_ITEMS = [
 
 /**
  * IAM Navbar — sticky, responsive, with mobile slide-in overlay.
- *
- * Desktop: logo · nav links (Services opens dropdown only) · CTA
- * Mobile:  logo · hamburger → full-height overlay menu with sub-links
  */
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -55,13 +58,13 @@ export function Navbar() {
                     className="text-sm font-medium text-zinc-400 hover:text-white transition-colors cursor-pointer"
                   >
                     {link.label}
-                    <span className="ml-1 text-xs opacity-60">▾</span>
+                    <span className="ml-1 text-xs opacity-60">&dtrif;</span>
                   </button>
                   {/* Dropdown */}
                   <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
                     <div className="bg-surface rounded border border-border-dark p-3 w-56 shadow-lg">
                       <a
-                        href="/services"
+                        href={link.href}
                         className="block px-4 py-2 text-xs font-semibold text-zinc-500 uppercase tracking-wider border-b border-border-dark/30"
                       >
                         All Services
@@ -80,7 +83,7 @@ export function Navbar() {
                 </>
               ) : (
                 <a
-                  href={link.href!}
+                  href={link.href}
                   className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
                 >
                   {link.label}
@@ -129,7 +132,7 @@ export function Navbar() {
               className="text-2xl leading-none text-zinc-400 hover:text-white transition-colors"
               aria-label="Close menu"
             >
-              ✕
+              &times;
             </button>
           </div>
 
@@ -143,11 +146,11 @@ export function Navbar() {
                     </span>
                     <div className="flex flex-col gap-2 pl-4 pb-3">
                       <a
-                        href="/services"
+                        href={link.href}
                         onClick={close}
                         className="block py-2 text-sm font-semibold text-zinc-400 hover:text-zinc-200 transition-colors"
                       >
-                        All Services →
+                        All Services &rarr;
                       </a>
                       {DROPDOWN_ITEMS.map((item) => (
                         <a
@@ -163,7 +166,7 @@ export function Navbar() {
                   </>
                 ) : (
                   <a
-                    href={link.href!}
+                    href={link.href}
                     onClick={close}
                     className="block py-3 text-lg font-medium text-zinc-300 hover:text-white hover:pl-4 transition-all border-b border-border-dark/30"
                   >
